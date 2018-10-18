@@ -16,5 +16,6 @@ export * from './Heading';
 export * from './Image';
 export * from './List';
 export * from './Paragraph';
+export * from './Rating';
 export * from './Spinner';
 export * from './Text';
