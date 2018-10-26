@@ -9,12 +9,13 @@ import _Rating from './styled';
 type Props = {
   className?: string,
   size: Size,
+  initialRating?: number,
   maxRating?: string,
   onRate?: Function
 };
 
 type State = {
-  rating: number,
+  rating?: number,
   isSelecting: boolean,
   selectedIndex: ?number
 };
@@ -24,11 +25,12 @@ class Rating extends Component<Props, State> {
     className: null,
     size: 'regular',
     maxRating: 5,
-    onRate: null
+    onRate: null,
+    initialRating: null
   };
 
   state = {
-    rating: 0,
+    rating: this.props.initialRating,
     isSelecting: false,
     selectedIndex: null
   };
@@ -59,7 +61,7 @@ class Rating extends Component<Props, State> {
           <RatingStar
             key={index}
             size={size}
-            active={selectedIndex >= index || rating >= index + 1}
+            active={isSelecting ? selectedIndex >= index : rating >= index + 1}
             onClick={() => this.handleStarClick(index)}
             onMouseEnter={() => this.handleStarMouseOver(index)}
           />
